@@ -22,7 +22,6 @@ public class Studio {
 		machine = new LottoMachine(this.makeBall());
 		return machine;		
 	}
-	
 	public ArrayList<LottoBall> makeBall() {
 		ArrayList<LottoBall> balls = new ArrayList<LottoBall>();
 		for(int i=0;i<45;i++) {

@@ -11,12 +11,6 @@ public class LottoBall {
 		return ballNumber;
 	}
 	
-//		
-//	private void setBallNumber(int ballNumber) {
-//		this.ballNumber = ballNumber;
-//	}
-//	
-//		
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

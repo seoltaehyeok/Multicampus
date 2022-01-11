@@ -35,9 +35,7 @@ public class LottoMachine {
 		Arrays.sort(choiceBalls);
 		System.out.printf("추첨된 번호는 %s 입니다.%n",Arrays.toString(choiceBalls));
 	}
-	void shuffle(LottoBall[] balls) {
-		
-	}
+
 	LottoBall getBall() {
 		LottoBall ball = null;
 		Random r = new Random();
