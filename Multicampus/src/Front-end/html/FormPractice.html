@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <h1>Form</h1>
+
+    <p>사용자로부터 어떠한 값을 받을 목적으로 기술
+        전달될 데이터는 form 태그에 포함되어야 한다.<br>
+        GET: 256Byte - 4000Byte 이내의 크기의 데이터만 전송 가능.<br>
+        주소줄에 address?key=value&key=value... <br>
+        
+        POST: 크기 상관없음.<br>
+        body 처음에 붙어서 넘어간다. (내용을 볼 수 없음)
+    </p>
+
+    <form method="post" action="Result.jsp">
+        <fieldset>
+            <legend>상품 주문</legend>
+            <label>상품: <input type="text" name="product" maxlength="10" placeholder="상품 목록을 입력해 주세요"></label>
+            <br>
+            <label for="qty">수량: </label>
+            <input type="number" id="qty" name="qty" min="0" max="10" step="2">
+        </fieldset>
+
+        <fieldset>
+        	size는 필드의 크기(입력할 수 있는 칸의 크기)<br>
+        	maxlength 정의한 필드에 입력할 수 있는 최대 값. 10이면 10자만 입력 가능. size가 20이면 크기는 20자 입력이 가능한데
+        	입력 할 수 있는 최대 값은 10자만 입력 가능 <br>
+          disabled는 값을 입력해주더라도 JSP에게 값을 전달하지 않는다.<br>
+          hidden은 웹 화면 상 보이지는 않지만 입력된 값이 있다면 JSP에게 값을 전달한다. (사용자는 모르게 서버에 데이터를 전달하려고 할때사용)
+            <legend>주문한 사람</legend>
+            <label>이름: <input type="text" name="name" size="50" required></label><br>
+            <label>주소: <input type="text" name="address" size="70" value="서울시" readonly></label><br>
+            <label>이메일: <input type="email" name="email" size="70" disabled></label><br>
+            <label>패스워드: <input type="password" name="pw" size="10"></label><br>
+            <input type="hidden" name="mail" value="avc@abc.com"><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>배송지</legend>
+            <label>배송일자: <input type="date" name="pw" size="10" value="2022-12-25"></label><br>
+            <label>배송일자: <input type="time" name="pw" size="10" value="14:25:30"></label><br>
+            
+            <label>month, week: <input type="week" name="pw" size="10"></label><br>
+            
+            <label>단일 선택: <br>
+            	name이 동일한 요소 중 1개만 선택된다. name 값이 틀리면 다중 선택이 된다<br>
+            	value 속성이 있어야 그 값이 name 변수에 붙어 넘어간다<br>
+            	<input type="radio" name="language" value="Java">자바<br>
+            	<input type="radio" name="language" value="JavaScript" checked>자바스크립트<br>
+            	<input type="radio" name="language" value="React">리엑트<br>
+            </label>
+            <br>
+
+            <label>다중 선택: <br> <!--다중선택은 jsp에서 받을 때 배열로 받게 됨-->
+            	name이 동일한 요소 중 1개만 선택된다. name 값이 틀리면 다중 선택이 된다<br>
+            	value 속성이 있어야 그 값이 name 변수에 붙어 넘어간다<br>
+            	<input type="checkbox" name="baseball" value="kt">kt<br>
+            	<input type="checkbox" name="baseball" value="두산">두산<br>
+            	<input type="checkbox" name="baseball" value="lg">lg<br>
+            </label>
+            <br>
+            <br>
+            <label>오늘 수업의 소감은 rows는 줄 수 / cols가 한줄당 입력 가능한 글자 수<br>
+              <textarea name="comment"rows="10" cols="100"></textarea>
+            </label>
+            <br>
+            <br>
+            radio, checkbox를 하나로 묶은형태 (단일선택과 다중선택을 묶음)<br>
+            option은 예외적으로 select value속성이 없더라도 작성한 문자열이 전송된다.<br>
+
+            <label>하나만 선택 가능<br>
+            <select name="lang">
+              <option>JAVA</option>
+              <option>JAVASCRIPT</option>
+              <option>REACT</option>
+              <option>JQUERY</option>
+            </select></label>
+            <br>
+            <label>다중 선택 가능<br> <!--다중선택은 jsp에서 받을 때 배열로 받게 됨-->
+              <!--multiple="multiple" 처럼 key=value가 같으면 생략가능 -> multiple-->
+              <select name="multi" multiple="multiple" size="5"> 
+                <option>JAVA</option>
+                <option>JAVASCRIPT</option>
+                <option>REACT</option>
+                <option>JQUERY</option>
+              </select></label>
+              <br>
+              <label>파일 전송<br> <!--get 파라미터로 전송이 안된다. 외부 .jar파일이 필요하다-->
+                <input type="file" name="upload">
+                </label>
+                
+        </fieldset>
+
+        <button type="submit">SEND</button>
+        <button type="reset">CANCEL</button>
+    </form>
+</body>
+</html>
